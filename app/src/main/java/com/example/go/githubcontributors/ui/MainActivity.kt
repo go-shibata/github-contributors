@@ -1,7 +1,8 @@
-package com.example.go.githubcontributors
+package com.example.go.githubcontributors.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.go.githubcontributors.R
 
 class MainActivity : AppCompatActivity() {
 
