@@ -1,6 +1,6 @@
-package com.example.go.githubcontributors.network
+package com.example.go.githubcontributors.data
 
-import com.example.go.githubcontributors.network.model.Contributor
+import com.example.go.githubcontributors.data.model.Contributor
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

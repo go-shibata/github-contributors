@@ -1,4 +1,4 @@
-package com.example.go.githubcontributors.network.model
+package com.example.go.githubcontributors.data.model
 
 import com.google.gson.annotations.SerializedName
 
