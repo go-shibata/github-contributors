@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.go.githubcontributors.R
 import com.example.go.githubcontributors.data.model.Contributor
 import com.example.go.githubcontributors.databinding.MainFragmentBinding
@@ -40,12 +39,6 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener,
     ): View? {
         val binding = MainFragmentBinding.inflate(inflater, container, false)
         binding.listContributors.apply {
-            addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(),
-                    DividerItemDecoration.VERTICAL
-                )
-            )
             setController(epoxyController)
         }
 

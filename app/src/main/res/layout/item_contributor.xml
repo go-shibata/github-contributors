@@ -9,45 +9,52 @@
             type="com.example.go.githubcontributors.data.model.Contributor" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/margin_mid">
+        app:cardUseCompatPadding="true">
 
-        <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="@dimen/contributor_image_size"
-            android:layout_height="@dimen/contributor_image_size"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_mid"
-            android:text="@{contributor.name}"
-            android:textSize="@dimen/contributor_name_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/avatar"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="@dimen/margin_mid">
 
-        <ImageView
-            android:id="@+id/contributions_icon"
-            android:layout_width="@dimen/contributor_contributions_icon_size"
-            android:layout_height="@dimen/contributor_contributions_icon_size"
-            android:src="@drawable/ic_contribution"
-            app:layout_constraintBottom_toBottomOf="@id/contributions"
-            app:layout_constraintEnd_toStartOf="@id/contributions"
-            app:layout_constraintTop_toTopOf="@id/contributions" />
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="@dimen/contributor_image_size"
+                android:layout_height="@dimen/contributor_image_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/contributions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/contributor_contributions_text(contributor.contributions)}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_mid"
+                android:text="@{contributor.name}"
+                android:textSize="@dimen/contributor_name_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/avatar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/contributions_icon"
+                android:layout_width="@dimen/contributor_contributions_icon_size"
+                android:layout_height="@dimen/contributor_contributions_icon_size"
+                android:src="@drawable/ic_contribution"
+                app:layout_constraintBottom_toBottomOf="@id/contributions"
+                app:layout_constraintEnd_toStartOf="@id/contributions"
+                app:layout_constraintTop_toTopOf="@id/contributions" />
+
+            <TextView
+                android:id="@+id/contributions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/contributor_contributions_text(contributor.contributions)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>
