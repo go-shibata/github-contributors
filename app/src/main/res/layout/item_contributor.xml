@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:text="@{@string/contributor_contributions_text(contributor.contributions)}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
