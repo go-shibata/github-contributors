@@ -37,7 +37,6 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
     ): View? {
         val binding = MainFragmentBinding.inflate(inflater, container, false)
         binding.listContributors.apply {
-            epoxyController.setOnClickContributionListener(this@MainFragment)
             addItemDecoration(
                 DividerItemDecoration(
                     requireContext(),

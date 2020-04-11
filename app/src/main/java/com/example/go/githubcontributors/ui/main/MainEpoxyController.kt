@@ -7,14 +7,11 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_contributor.view.*
 import javax.inject.Inject
 
-class MainEpoxyController @Inject constructor() : EpoxyController() {
+class MainEpoxyController @Inject constructor(
+    private val listener: OnClickContributorListener
+) : EpoxyController() {
 
     private var data: List<Contributor> = emptyList()
-    private var listener: OnClickContributorListener? = null
-
-    fun setOnClickContributionListener(listener: OnClickContributorListener) {
-        this.listener = listener
-    }
 
     fun setData(data: List<Contributor>) {
         this.data = data
@@ -33,7 +30,7 @@ class MainEpoxyController @Inject constructor() : EpoxyController() {
                         .into(view.dataBinding.root.avatar)
 
                     view.dataBinding.root.setOnClickListener { _ ->
-                        listener?.onClickContributor(it)
+                        listener.onClickContributor(it)
                     }
                 }
             }
