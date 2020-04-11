@@ -28,6 +28,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 
     dataBinding {
         enabled true
@@ -36,6 +39,7 @@ android {
 
 dependencies {
     def navigationVersion = '2.2.1'
+    def daggerVersion = '2.27'
     def retrofitVersion = '2.8.1'
     def loggingInterceptorVersion = '4.4.1'
 
@@ -50,6 +54,13 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$navigationVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    // dagger
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
