@@ -43,6 +43,7 @@ dependencies {
     def retrofitVersion = '2.8.1'
     def loggingInterceptorVersion = '4.4.1'
     def epoxyVersion = '3.9.0'
+    def picassoVersion = '2.71828'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -72,6 +73,9 @@ dependencies {
     implementation "com.airbnb.android:epoxy:$epoxyVersion"
     implementation "com.airbnb.android:epoxy-databinding:$epoxyVersion"
     kapt "com.airbnb.android:epoxy-processor:$epoxyVersion"
+
+    // picasso
+    implementation "com.squareup.picasso:picasso:$picassoVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
