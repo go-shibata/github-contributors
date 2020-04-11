@@ -19,7 +19,7 @@ class MainEpoxyController @Inject constructor() : EpoxyController() {
     override fun buildModels() {
         data.forEach {
             itemContributor {
-                id(it.name)
+                id(it.id)
                 contributor(it)
 
                 onBind { _, view, _ ->

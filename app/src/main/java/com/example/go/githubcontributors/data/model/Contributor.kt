@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Contributor(
     @SerializedName("login") val name: String,
+    val id: Int,
     val avatarUrl: String,
     val contributions: Int
 )
