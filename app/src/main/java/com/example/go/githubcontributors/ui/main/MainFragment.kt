@@ -1,6 +1,8 @@
 package com.example.go.githubcontributors.ui.main
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,12 +10,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import com.example.go.githubcontributors.data.model.Contributor
 import com.example.go.githubcontributors.databinding.MainFragmentBinding
 import com.example.go.githubcontributors.di.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener {
 
     @Inject
     lateinit var factory: ViewModelFactory<MainViewModel>
@@ -33,6 +36,7 @@ class MainFragment : Fragment() {
     ): View? {
         val binding = MainFragmentBinding.inflate(inflater, container, false)
         binding.listContributors.apply {
+            epoxyController.setOnClickContributionListener(this@MainFragment)
             setController(epoxyController)
         }
 
@@ -47,5 +51,10 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.fetchContributors()
+    }
+
+    override fun onClickContributor(contributor: Contributor) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(contributor.htmlUrl))
+        startActivity(intent)
     }
 }

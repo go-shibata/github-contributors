@@ -10,6 +10,11 @@ import javax.inject.Inject
 class MainEpoxyController @Inject constructor() : EpoxyController() {
 
     private var data: List<Contributor> = emptyList()
+    private var listener: OnClickContributorListener? = null
+
+    fun setOnClickContributionListener(listener: OnClickContributorListener) {
+        this.listener = listener
+    }
 
     fun setData(data: List<Contributor>) {
         this.data = data
@@ -26,8 +31,16 @@ class MainEpoxyController @Inject constructor() : EpoxyController() {
                     Picasso.get()
                         .load(it.avatarUrl)
                         .into(view.dataBinding.root.avatar)
+
+                    view.dataBinding.root.setOnClickListener { _ ->
+                        listener?.onClickContributor(it)
+                    }
                 }
             }
         }
+    }
+
+    interface OnClickContributorListener {
+        fun onClickContributor(contributor: Contributor)
     }
 }
