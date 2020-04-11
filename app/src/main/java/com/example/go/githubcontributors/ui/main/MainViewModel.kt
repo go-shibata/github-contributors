@@ -11,7 +11,8 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
-    private val retrofitBase: RetrofitBase
+    private val retrofitBase: RetrofitBase,
+    private val onFailureGetContributorsListener: OnFailureGetContributorsListener
 ) : ViewModel() {
 
     private val _contributors: MutableLiveData<List<Contributor>> = MutableLiveData()
@@ -23,14 +24,24 @@ class MainViewModel @Inject constructor(
                 call: Call<List<Contributor>>,
                 response: Response<List<Contributor>>
             ) {
-                if (!response.isSuccessful) return
-                val list = response.body() ?: return
-                _contributors.postValue(list)
+                if (!response.isSuccessful) {
+                    fail()
+                    return
+                }
+                _contributors.postValue(response.body())
             }
 
             override fun onFailure(call: Call<List<Contributor>>, t: Throwable) {
-                TODO("Not yet implemented")
+                fail()
+            }
+
+            fun fail() {
+                onFailureGetContributorsListener.onFailure()
             }
         })
+    }
+
+    interface OnFailureGetContributorsListener {
+        fun onFailure()
     }
 }

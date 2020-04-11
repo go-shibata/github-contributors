@@ -7,17 +7,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.go.githubcontributors.R
 import com.example.go.githubcontributors.data.model.Contributor
 import com.example.go.githubcontributors.databinding.MainFragmentBinding
 import com.example.go.githubcontributors.di.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener {
+class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener,
+    MainViewModel.OnFailureGetContributorsListener {
 
     @Inject
     lateinit var factory: ViewModelFactory<MainViewModel>
@@ -62,5 +65,13 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
     override fun onClickContributor(contributor: Contributor) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(contributor.htmlUrl))
         startActivity(intent)
+    }
+
+    override fun onFailure() {
+        Toast.makeText(
+            requireContext(),
+            R.string.fetch_contributors_fail_message,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
