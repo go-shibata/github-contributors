@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.go.githubcontributors.data.model.Contributor
 import com.example.go.githubcontributors.databinding.MainFragmentBinding
 import com.example.go.githubcontributors.di.ViewModelFactory
@@ -37,6 +38,12 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
         val binding = MainFragmentBinding.inflate(inflater, container, false)
         binding.listContributors.apply {
             epoxyController.setOnClickContributionListener(this@MainFragment)
+            addItemDecoration(
+                DividerItemDecoration(
+                    requireContext(),
+                    DividerItemDecoration.VERTICAL
+                )
+            )
             setController(epoxyController)
         }
 
