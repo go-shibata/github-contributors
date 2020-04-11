@@ -10,13 +10,15 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor() : ViewModel() {
+class MainViewModel @Inject constructor(
+    private val retrofitBase: RetrofitBase
+) : ViewModel() {
 
     private val _contributors: MutableLiveData<List<Contributor>> = MutableLiveData()
     val contributors: LiveData<List<Contributor>> = _contributors
 
     fun fetchContributors() {
-        RetrofitBase().getContributors(object : Callback<List<Contributor>> {
+        retrofitBase.getContributors(object : Callback<List<Contributor>> {
             override fun onResponse(
                 call: Call<List<Contributor>>,
                 response: Response<List<Contributor>>
