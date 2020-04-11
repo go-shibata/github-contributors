@@ -30,5 +30,22 @@
             android:textSize="@dimen/contributor_name_text_size"
             app:layout_constraintStart_toEndOf="@id/avatar"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/contributions_icon"
+            android:layout_width="@dimen/contributor_contributions_icon_size"
+            android:layout_height="@dimen/contributor_contributions_icon_size"
+            android:src="@drawable/ic_contribution"
+            app:layout_constraintBottom_toBottomOf="@id/contributions"
+            app:layout_constraintEnd_toStartOf="@id/contributions"
+            app:layout_constraintTop_toTopOf="@id/contributions" />
+
+        <TextView
+            android:id="@+id/contributions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/contributor_contributions_text(contributor.contributions)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

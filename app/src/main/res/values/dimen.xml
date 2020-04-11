@@ -4,4 +4,5 @@
 
     <dimen name="contributor_image_size">48dp</dimen>
     <dimen name="contributor_name_text_size">16sp</dimen>
+    <dimen name="contributor_contributions_icon_size">16dp</dimen>
 </resources>

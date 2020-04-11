@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GitHubContributors</string>
+
+    <string name="contributor_contributions_text">contributions: %d</string>
 </resources>
