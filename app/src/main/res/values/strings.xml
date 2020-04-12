@@ -2,6 +2,7 @@
     <string name="app_name">GitHubContributors</string>
 
     <string name="contributor_contributions_text">contributions: %d</string>
+    <string name="contributors_list_empty_message">表示するデータはありません</string>
 
     <string name="fetch_contributors_fail_message">情報の取得に失敗しました</string>
 </resources>

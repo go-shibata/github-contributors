@@ -3,6 +3,7 @@ package com.example.go.githubcontributors.ui.main
 import com.airbnb.epoxy.EpoxyController
 import com.example.go.githubcontributors.data.model.Contributor
 import com.example.go.githubcontributors.itemContributor
+import com.example.go.githubcontributors.itemContributorEmpty
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_contributor.view.*
 import javax.inject.Inject
@@ -19,6 +20,12 @@ class MainEpoxyController @Inject constructor(
     }
 
     override fun buildModels() {
+        if (data.isEmpty()) {
+            itemContributorEmpty {
+                id("empty")
+            }
+            return
+        }
         data.forEach {
             itemContributor {
                 id(it.id)
