@@ -50,7 +50,7 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
         })
 
         viewModel.onFailureFetchContributors.observe(viewLifecycleOwner, Observer {
-            epoxyController.setData(emptyList())
+            epoxyController.requestModelBuild()
             Toast.makeText(
                 requireContext(),
                 R.string.fetch_contributors_fail_message,
