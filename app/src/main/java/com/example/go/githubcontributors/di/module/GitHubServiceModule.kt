@@ -1,14 +1,14 @@
 package com.example.go.githubcontributors.di.module
 
-import com.example.go.githubcontributors.data.RetrofitBase
+import com.example.go.githubcontributors.data.GitHubService
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class RetrofitModule {
+class GitHubServiceModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitBase(): RetrofitBase = RetrofitBase()
+    fun provideGitHubService(): GitHubService = GitHubService()
 }

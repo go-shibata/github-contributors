@@ -12,13 +12,13 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RetrofitBase @Inject constructor() {
+class GitHubService @Inject constructor() {
 
     companion object {
         private const val BASE_URL = "https://api.github.com/"
     }
 
-    private val api: Api
+    private val gitHubApi: GitHubApi
 
     init {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
@@ -37,11 +37,11 @@ class RetrofitBase @Inject constructor() {
             .client(httpClient)
             .build()
 
-        api = retrofit.create(Api::class.java)
+        gitHubApi = retrofit.create(GitHubApi::class.java)
     }
 
     fun getContributors(callback: Callback<List<Contributor>>) {
-        val call = api.getContributors()
+        val call = gitHubApi.getContributors()
         call.enqueue(callback)
     }
 }

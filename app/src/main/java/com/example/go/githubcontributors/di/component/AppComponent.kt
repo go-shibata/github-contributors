@@ -2,9 +2,9 @@ package com.example.go.githubcontributors.di.component
 
 import android.app.Application
 import com.example.go.githubcontributors.App
+import com.example.go.githubcontributors.di.module.GitHubServiceModule
 import com.example.go.githubcontributors.di.module.MainActivityModule
 import com.example.go.githubcontributors.di.module.MainFragmentModule
-import com.example.go.githubcontributors.di.module.RetrofitModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidInjectionModule::class,
-        RetrofitModule::class,
+        GitHubServiceModule::class,
         MainActivityModule::class,
         MainFragmentModule::class
     ]

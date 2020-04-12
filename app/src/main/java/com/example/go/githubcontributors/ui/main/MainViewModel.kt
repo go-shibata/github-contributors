@@ -3,7 +3,7 @@ package com.example.go.githubcontributors.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.go.githubcontributors.data.RetrofitBase
+import com.example.go.githubcontributors.data.GitHubService
 import com.example.go.githubcontributors.data.model.Contributor
 import com.example.go.githubcontributors.util.SingleLiveData
 import retrofit2.Call
@@ -12,7 +12,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
-    private val retrofitBase: RetrofitBase
+    private val gitHubService: GitHubService
 ) : ViewModel() {
 
     private val _contributors: MutableLiveData<List<Contributor>> = MutableLiveData()
@@ -26,7 +26,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun fetchContributors() {
-        retrofitBase.getContributors(object : Callback<List<Contributor>> {
+        gitHubService.getContributors(object : Callback<List<Contributor>> {
             override fun onResponse(
                 call: Call<List<Contributor>>,
                 response: Response<List<Contributor>>

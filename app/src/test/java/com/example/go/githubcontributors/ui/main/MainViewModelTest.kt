@@ -2,7 +2,7 @@ package com.example.go.githubcontributors.ui.main
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.go.githubcontributors.data.RetrofitBase
+import com.example.go.githubcontributors.data.GitHubService
 import com.example.go.githubcontributors.data.model.Contributor
 import com.nhaarman.mockitokotlin2.*
 import org.junit.After
@@ -23,7 +23,7 @@ class MainViewModelTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
-    lateinit var mockRetrofitBase: RetrofitBase
+    lateinit var mockGitHubService: GitHubService
 
     @Mock
     lateinit var mockCall: Call<List<Contributor>>
@@ -41,7 +41,7 @@ class MainViewModelTest {
 
     @Before
     fun setUp() {
-        viewModel = MainViewModel(mockRetrofitBase)
+        viewModel = MainViewModel(mockGitHubService)
         viewModel.contributors.observeForever(mockContributorsObserver)
         viewModel.onFailureFetchContributors.observeForever(mockOnFailureFetchContributorsObserver)
     }
@@ -52,14 +52,14 @@ class MainViewModelTest {
 
     @Test
     fun initViewModel_confirmGetContributorsCalled() {
-        verify(mockRetrofitBase, times(1)).getContributors(any())
+        verify(mockGitHubService, times(1)).getContributors(any())
     }
 
     @Test
     fun fetchContributors_confirmGetContributorsCalled() {
         viewModel.fetchContributors()
         // include init of MainViewModel
-        verify(mockRetrofitBase, times(2)).getContributors(any())
+        verify(mockGitHubService, times(2)).getContributors(any())
     }
 
     @Test
@@ -70,7 +70,7 @@ class MainViewModelTest {
         )
         whenever(mockResponse.isSuccessful).thenReturn(true)
         whenever(mockResponse.body()).thenReturn(data)
-        whenever(mockRetrofitBase.getContributors(any())).then {
+        whenever(mockGitHubService.getContributors(any())).then {
             val callback = it.getArgument(0) as Callback<List<Contributor>>
             callback.onResponse(mockCall, mockResponse)
         }
@@ -82,7 +82,7 @@ class MainViewModelTest {
 
     @Test
     fun fetchContributors_whenFailure_confirmOnFailureFetchContributorsFlow() {
-        whenever(mockRetrofitBase.getContributors(any())).then {
+        whenever(mockGitHubService.getContributors(any())).then {
             val callback = it.getArgument(0) as Callback<List<Contributor>>
             callback.onFailure(mockCall, Throwable())
         }
@@ -95,7 +95,7 @@ class MainViewModelTest {
     @Test
     fun fetchContributors_whenResponseHasError_confirmOnFailureFetchContributorsFlow() {
         whenever(mockResponse.isSuccessful).thenReturn(false)
-        whenever(mockRetrofitBase.getContributors(any())).then {
+        whenever(mockGitHubService.getContributors(any())).then {
             val callback = it.getArgument(0) as Callback<List<Contributor>>
             callback.onResponse(mockCall, mockResponse)
         }
