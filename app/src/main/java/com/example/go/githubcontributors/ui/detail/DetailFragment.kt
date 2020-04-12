@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.go.githubcontributors.data.model.Contributor
 import com.example.go.githubcontributors.databinding.FragmentDetailBinding
 import com.example.go.githubcontributors.di.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
@@ -19,8 +18,6 @@ class DetailFragment : Fragment() {
     lateinit var factory: ViewModelFactory<DetailViewModel>
     private val viewModel: DetailViewModel by activityViewModels { factory }
 
-    private lateinit var contributor: Contributor
-
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
@@ -30,7 +27,8 @@ class DetailFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         checkNotNull(arguments).let {
-            contributor = DetailFragmentArgs.fromBundle(it).contributor
+            val contributor = DetailFragmentArgs.fromBundle(it).contributor
+            viewModel.setContributor(contributor)
         }
     }
 
@@ -38,7 +36,9 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentDetailBinding.inflate(inflater, container, false)
+        val binding = FragmentDetailBinding.inflate(inflater, container, false).apply {
+            viewModel = this@DetailFragment.viewModel
+        }
         return binding.root
     }
 }
