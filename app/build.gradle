@@ -77,7 +77,13 @@ dependencies {
     // picasso
     implementation "com.squareup.picasso:picasso:$picassoVersion"
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'android.arch.core:core-testing:1.1.1'
+    testImplementation 'androidx.test:runner:1.2.0'
+    testImplementation 'androidx.test.ext:junit:1.1.1'
+    testImplementation 'org.assertj:assertj-core:3.15.0'
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
+    testImplementation "org.mockito:mockito-inline:2.8.9"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
