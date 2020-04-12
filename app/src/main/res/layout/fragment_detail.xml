@@ -168,6 +168,7 @@
                 android:layout_marginTop="@dimen/margin_mid"
                 android:text="@{@string/contributor_detail_public_repos_text(viewModel.contributorDetail.publicRepos)}"
                 android:textSize="@dimen/contributor_detail_text_size"
+                android:visibility="@{viewModel.contributorDetail != null ? View.VISIBLE : View.GONE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/mail" />
@@ -178,6 +179,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{@string/contributor_detail_public_gists_text(viewModel.contributorDetail.publicGists)}"
                 android:textSize="@dimen/contributor_detail_text_size"
+                android:visibility="@{viewModel.contributorDetail != null ? View.VISIBLE : View.GONE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/public_repos" />
@@ -188,6 +190,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{@string/contributor_detail_public_followers_text(viewModel.contributorDetail.followers)}"
                 android:textSize="@dimen/contributor_detail_text_size"
+                android:visibility="@{viewModel.contributorDetail != null ? View.VISIBLE : View.GONE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/public_gists" />
@@ -198,6 +201,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{@string/contributor_detail_public_following_text(viewModel.contributorDetail.following)}"
                 android:textSize="@dimen/contributor_detail_text_size"
+                android:visibility="@{viewModel.contributorDetail != null ? View.VISIBLE : View.GONE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/followers" />
