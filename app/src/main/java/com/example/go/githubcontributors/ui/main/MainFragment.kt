@@ -18,8 +18,7 @@ import com.example.go.githubcontributors.di.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener,
-    MainViewModel.OnFailureGetContributorsListener {
+class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener {
 
     @Inject
     lateinit var factory: ViewModelFactory<MainViewModel>
@@ -42,8 +41,16 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener,
             setController(epoxyController)
         }
 
-        viewModel.contributors.observe(this.viewLifecycleOwner, Observer {
+        viewModel.contributors.observe(viewLifecycleOwner, Observer {
             epoxyController.setData(it)
+        })
+
+        viewModel.onFailureFetchContributors.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(
+                requireContext(),
+                R.string.fetch_contributors_fail_message,
+                Toast.LENGTH_SHORT
+            ).show()
         })
 
         return binding.root
@@ -58,13 +65,5 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener,
     override fun onClickContributor(contributor: Contributor) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(contributor.htmlUrl))
         startActivity(intent)
-    }
-
-    override fun onFailure() {
-        Toast.makeText(
-            requireContext(),
-            R.string.fetch_contributors_fail_message,
-            Toast.LENGTH_SHORT
-        ).show()
     }
 }

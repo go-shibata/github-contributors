@@ -11,12 +11,14 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
-    private val retrofitBase: RetrofitBase,
-    private val onFailureGetContributorsListener: OnFailureGetContributorsListener
+    private val retrofitBase: RetrofitBase
 ) : ViewModel() {
 
     private val _contributors: MutableLiveData<List<Contributor>> = MutableLiveData()
     val contributors: LiveData<List<Contributor>> = _contributors
+
+    private val _onFailureFetchContributors: MutableLiveData<Unit> = MutableLiveData()
+    val onFailureFetchContributors: LiveData<Unit> = _onFailureFetchContributors
 
     fun fetchContributors() {
         retrofitBase.getContributors(object : Callback<List<Contributor>> {
@@ -36,12 +38,8 @@ class MainViewModel @Inject constructor(
             }
 
             fun fail() {
-                onFailureGetContributorsListener.onFailure()
+                _onFailureFetchContributors.postValue(Unit)
             }
         })
-    }
-
-    interface OnFailureGetContributorsListener {
-        fun onFailure()
     }
 }
