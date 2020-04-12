@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.go.githubcontributors.databinding.FragmentDetailBinding
 import com.example.go.githubcontributors.di.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
@@ -16,7 +16,7 @@ class DetailFragment : Fragment() {
 
     @Inject
     lateinit var factory: ViewModelFactory<DetailViewModel>
-    private val viewModel: DetailViewModel by activityViewModels { factory }
+    private val viewModel: DetailViewModel by viewModels { factory }
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -28,7 +28,7 @@ class DetailFragment : Fragment() {
 
         checkNotNull(arguments).let {
             val contributor = DetailFragmentArgs.fromBundle(it).contributor
-            viewModel.setContributor(contributor)
+            viewModel.fetchContributorDetail(contributor)
         }
     }
 
