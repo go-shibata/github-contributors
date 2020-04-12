@@ -11,7 +11,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
-    private val retrofitBase: RetrofitBase
+    retrofitBase: RetrofitBase
 ) : ViewModel() {
 
     private val _contributors: MutableLiveData<List<Contributor>> = MutableLiveData()
@@ -20,7 +20,7 @@ class MainViewModel @Inject constructor(
     private val _onFailureFetchContributors: MutableLiveData<Unit> = MutableLiveData()
     val onFailureFetchContributors: LiveData<Unit> = _onFailureFetchContributors
 
-    fun fetchContributors() {
+    init {
         retrofitBase.getContributors(object : Callback<List<Contributor>> {
             override fun onResponse(
                 call: Call<List<Contributor>>,

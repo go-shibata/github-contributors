@@ -56,12 +56,6 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewModel.fetchContributors()
-    }
-
     override fun onClickContributor(contributor: Contributor) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(contributor.htmlUrl))
         startActivity(intent)
