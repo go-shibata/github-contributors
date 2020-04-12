@@ -1,8 +1,6 @@
 package com.example.go.githubcontributors.ui.main
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.go.githubcontributors.R
 import com.example.go.githubcontributors.data.model.Contributor
 import com.example.go.githubcontributors.databinding.FragmentMainBinding
@@ -63,7 +62,8 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
     }
 
     override fun onClickContributor(contributor: Contributor) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(contributor.htmlUrl))
-        startActivity(intent)
+        findNavController().navigate(
+            MainFragmentDirections.actionMainFragmentToDetailFragment(contributor)
+        )
     }
 }

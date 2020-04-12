@@ -1,6 +1,7 @@
 package com.example.go.githubcontributors.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Contributor(
     @SerializedName("login") val name: String,
@@ -8,4 +9,4 @@ data class Contributor(
     val avatarUrl: String,
     val htmlUrl: String,
     val contributions: Int
-)
+) : Serializable
