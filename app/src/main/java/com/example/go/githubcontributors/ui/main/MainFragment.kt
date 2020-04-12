@@ -37,12 +37,16 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
         savedInstanceState: Bundle?
     ): View? {
         val binding = MainFragmentBinding.inflate(inflater, container, false)
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.fetchContributors()
+        }
         binding.listContributors.apply {
             setController(epoxyController)
         }
 
         viewModel.contributors.observe(viewLifecycleOwner, Observer {
             epoxyController.setData(it)
+            binding.swipeRefreshLayout.isRefreshing = false
         })
 
         viewModel.onFailureFetchContributors.observe(viewLifecycleOwner, Observer {
@@ -51,6 +55,7 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
                 R.string.fetch_contributors_fail_message,
                 Toast.LENGTH_SHORT
             ).show()
+            binding.swipeRefreshLayout.isRefreshing = false
         })
 
         return binding.root
