@@ -52,7 +52,7 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
             epoxyController.requestModelBuild()
             Toast.makeText(
                 requireContext(),
-                R.string.fetch_contributors_fail_message,
+                R.string.fetch_fail_message,
                 Toast.LENGTH_SHORT
             ).show()
             binding.swipeRefreshLayout.isRefreshing = false
