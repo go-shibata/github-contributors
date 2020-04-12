@@ -15,187 +15,192 @@
             type="com.example.go.githubcontributors.ui.detail.DetailViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/margin_mid">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="@dimen/contributor_detail_image_size"
-            android:layout_height="@dimen/contributor_detail_image_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin_mid">
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.contributorDetail.name}"
-            android:textSize="@dimen/contributor_detail_name_text_size"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image" />
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="@dimen/contributor_detail_image_size"
+                android:layout_height="@dimen/contributor_detail_image_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/login_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.contributorDetail.loginId}"
-            android:textSize="@dimen/contributor_detail_login_id_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.contributorDetail.name}"
+                android:textSize="@dimen/contributor_detail_name_text_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image" />
 
-        <TextView
-            android:id="@+id/bio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@{viewModel.contributorDetail.bio}"
-            android:textSize="@dimen/contributor_detail_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_id" />
+            <TextView
+                android:id="@+id/login_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.contributorDetail.loginId}"
+                android:textSize="@dimen/contributor_detail_login_id_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name" />
 
-        <ImageView
-            android:id="@+id/icon_company"
-            android:layout_width="@dimen/contributor_detail_icon_size"
-            android:layout_height="@dimen/contributor_detail_icon_size"
-            android:src="@drawable/ic_company"
-            android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.company) ? View.GONE : View.VISIBLE}"
-            app:layout_constraintBottom_toBottomOf="@id/company"
-            app:layout_constraintEnd_toStartOf="@id/company"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/company" />
+            <TextView
+                android:id="@+id/bio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.contributorDetail.bio}"
+                android:textSize="@dimen/contributor_detail_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/login_id" />
 
-        <TextView
-            android:id="@+id/company"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_xSmall"
-            android:layout_marginTop="@dimen/margin_mid"
-            android:text="@{viewModel.contributorDetail.company}"
-            android:textSize="@dimen/contributor_detail_text_size"
-            android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.company) ? View.GONE : View.VISIBLE}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/icon_company"
-            app:layout_constraintTop_toBottomOf="@id/bio" />
+            <ImageView
+                android:id="@+id/icon_company"
+                android:layout_width="@dimen/contributor_detail_icon_size"
+                android:layout_height="@dimen/contributor_detail_icon_size"
+                android:src="@drawable/ic_company"
+                android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.company) ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@id/company"
+                app:layout_constraintEnd_toStartOf="@id/company"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/company" />
 
-        <ImageView
-            android:id="@+id/icon_location"
-            android:layout_width="@dimen/contributor_detail_icon_size"
-            android:layout_height="@dimen/contributor_detail_icon_size"
-            android:src="@drawable/ic_location"
-            android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.location) ? View.GONE : View.VISIBLE}"
-            app:layout_constraintBottom_toBottomOf="@id/location"
-            app:layout_constraintEnd_toStartOf="@id/location"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/location" />
+            <TextView
+                android:id="@+id/company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xSmall"
+                android:layout_marginTop="@dimen/margin_mid"
+                android:text="@{viewModel.contributorDetail.company}"
+                android:textSize="@dimen/contributor_detail_text_size"
+                android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.company) ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon_company"
+                app:layout_constraintTop_toBottomOf="@id/bio" />
 
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_xSmall"
-            android:text="@{viewModel.contributorDetail.location}"
-            android:textSize="@dimen/contributor_detail_text_size"
-            android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.location) ? View.GONE : View.VISIBLE}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/icon_location"
-            app:layout_constraintTop_toBottomOf="@id/company" />
+            <ImageView
+                android:id="@+id/icon_location"
+                android:layout_width="@dimen/contributor_detail_icon_size"
+                android:layout_height="@dimen/contributor_detail_icon_size"
+                android:src="@drawable/ic_location"
+                android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.location) ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@id/location"
+                app:layout_constraintEnd_toStartOf="@id/location"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/location" />
 
-        <ImageView
-            android:id="@+id/icon_blog"
-            android:layout_width="@dimen/contributor_detail_icon_size"
-            android:layout_height="@dimen/contributor_detail_icon_size"
-            android:src="@drawable/ic_link"
-            android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.blog) ? View.GONE : View.VISIBLE}"
-            app:layout_constraintBottom_toBottomOf="@id/blog"
-            app:layout_constraintEnd_toStartOf="@id/blog"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/blog" />
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xSmall"
+                android:text="@{viewModel.contributorDetail.location}"
+                android:textSize="@dimen/contributor_detail_text_size"
+                android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.location) ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon_location"
+                app:layout_constraintTop_toBottomOf="@id/company" />
 
-        <TextView
-            android:id="@+id/blog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_xSmall"
-            android:text="@{viewModel.contributorDetail.blog}"
-            android:textSize="@dimen/contributor_detail_text_size"
-            android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.blog) ? View.GONE : View.VISIBLE}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/icon_blog"
-            app:layout_constraintTop_toBottomOf="@id/location" />
+            <ImageView
+                android:id="@+id/icon_blog"
+                android:layout_width="@dimen/contributor_detail_icon_size"
+                android:layout_height="@dimen/contributor_detail_icon_size"
+                android:src="@drawable/ic_link"
+                android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.blog) ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@id/blog"
+                app:layout_constraintEnd_toStartOf="@id/blog"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/blog" />
 
-        <ImageView
-            android:id="@+id/icon_mail"
-            android:layout_width="@dimen/contributor_detail_icon_size"
-            android:layout_height="@dimen/contributor_detail_icon_size"
-            android:src="@drawable/ic_mail"
-            android:visibility="@{viewModel.contributorDetail.email != null ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toBottomOf="@id/mail"
-            app:layout_constraintEnd_toStartOf="@id/mail"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/mail" />
+            <TextView
+                android:id="@+id/blog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xSmall"
+                android:text="@{viewModel.contributorDetail.blog}"
+                android:textSize="@dimen/contributor_detail_text_size"
+                android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.blog) ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon_blog"
+                app:layout_constraintTop_toBottomOf="@id/location" />
 
-        <TextView
-            android:id="@+id/mail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_xSmall"
-            android:text="@{viewModel.contributorDetail.email}"
-            android:textSize="@dimen/contributor_detail_text_size"
-            android:visibility="@{viewModel.contributorDetail.email != null ? View.VISIBLE : View.GONE}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/icon_mail"
-            app:layout_constraintTop_toBottomOf="@id/blog" />
+            <ImageView
+                android:id="@+id/icon_mail"
+                android:layout_width="@dimen/contributor_detail_icon_size"
+                android:layout_height="@dimen/contributor_detail_icon_size"
+                android:src="@drawable/ic_mail"
+                android:visibility="@{viewModel.contributorDetail.email != null ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@id/mail"
+                app:layout_constraintEnd_toStartOf="@id/mail"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/mail" />
 
-        <TextView
-            android:id="@+id/public_repos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_mid"
-            android:text="@{@string/contributor_detail_public_repos_text(viewModel.contributorDetail.publicRepos)}"
-            android:textSize="@dimen/contributor_detail_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mail" />
+            <TextView
+                android:id="@+id/mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xSmall"
+                android:text="@{viewModel.contributorDetail.email}"
+                android:textSize="@dimen/contributor_detail_text_size"
+                android:visibility="@{viewModel.contributorDetail.email != null ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon_mail"
+                app:layout_constraintTop_toBottomOf="@id/blog" />
 
-        <TextView
-            android:id="@+id/public_gists"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/contributor_detail_public_gists_text(viewModel.contributorDetail.publicGists)}"
-            android:textSize="@dimen/contributor_detail_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/public_repos" />
+            <TextView
+                android:id="@+id/public_repos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_mid"
+                android:text="@{@string/contributor_detail_public_repos_text(viewModel.contributorDetail.publicRepos)}"
+                android:textSize="@dimen/contributor_detail_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mail" />
 
-        <TextView
-            android:id="@+id/followers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/contributor_detail_public_followers_text(viewModel.contributorDetail.followers)}"
-            android:textSize="@dimen/contributor_detail_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/public_gists" />
+            <TextView
+                android:id="@+id/public_gists"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/contributor_detail_public_gists_text(viewModel.contributorDetail.publicGists)}"
+                android:textSize="@dimen/contributor_detail_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/public_repos" />
 
-        <TextView
-            android:id="@+id/following"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/contributor_detail_public_following_text(viewModel.contributorDetail.following)}"
-            android:textSize="@dimen/contributor_detail_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/followers" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/contributor_detail_public_followers_text(viewModel.contributorDetail.followers)}"
+                android:textSize="@dimen/contributor_detail_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/public_gists" />
+
+            <TextView
+                android:id="@+id/following"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/contributor_detail_public_following_text(viewModel.contributorDetail.following)}"
+                android:textSize="@dimen/contributor_detail_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/followers" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
