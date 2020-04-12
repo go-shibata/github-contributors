@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.go.githubcontributors.ui.main.MainFragment"
-        android:label="main_fragment"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_detailFragment"
@@ -17,10 +17,13 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.go.githubcontributors.ui.detail.DetailFragment"
-        android:label="fragment_detail"
+        android:label="{title}"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="contributor"
             app:argType="com.example.go.githubcontributors.data.model.Contributor" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
 </navigation>

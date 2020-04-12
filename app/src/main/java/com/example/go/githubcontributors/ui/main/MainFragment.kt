@@ -63,7 +63,7 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
 
     override fun onClickContributor(contributor: Contributor) {
         findNavController().navigate(
-            MainFragmentDirections.actionMainFragmentToDetailFragment(contributor)
+            MainFragmentDirections.actionMainFragmentToDetailFragment(contributor, contributor.name)
         )
     }
 }
