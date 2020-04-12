@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.go.githubcontributors.data.RetrofitBase
 import com.example.go.githubcontributors.data.model.Contributor
+import com.example.go.githubcontributors.util.SingleLiveData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,7 +18,7 @@ class MainViewModel @Inject constructor(
     private val _contributors: MutableLiveData<List<Contributor>> = MutableLiveData()
     val contributors: LiveData<List<Contributor>> = _contributors
 
-    private val _onFailureFetchContributors: MutableLiveData<Unit> = MutableLiveData()
+    private val _onFailureFetchContributors: SingleLiveData<Unit> = SingleLiveData()
     val onFailureFetchContributors: LiveData<Unit> = _onFailureFetchContributors
 
     init {
