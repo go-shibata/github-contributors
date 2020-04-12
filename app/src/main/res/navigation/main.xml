@@ -9,5 +9,5 @@
         android:id="@+id/mainFragment"
         android:name="com.example.go.githubcontributors.ui.main.MainFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" />
+        tools:layout="@layout/fragment_main" />
 </navigation>

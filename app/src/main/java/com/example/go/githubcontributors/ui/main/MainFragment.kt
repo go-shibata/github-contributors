@@ -13,7 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.go.githubcontributors.R
 import com.example.go.githubcontributors.data.model.Contributor
-import com.example.go.githubcontributors.databinding.MainFragmentBinding
+import com.example.go.githubcontributors.databinding.FragmentMainBinding
 import com.example.go.githubcontributors.di.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -36,7 +36,7 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = MainFragmentBinding.inflate(inflater, container, false)
+        val binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.swipeRefreshLayout.setOnRefreshListener {
             viewModel.fetchContributors()
         }
