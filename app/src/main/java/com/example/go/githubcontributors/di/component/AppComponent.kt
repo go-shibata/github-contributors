@@ -2,6 +2,7 @@ package com.example.go.githubcontributors.di.component
 
 import android.app.Application
 import com.example.go.githubcontributors.App
+import com.example.go.githubcontributors.di.module.DetailFragmentModule
 import com.example.go.githubcontributors.di.module.GitHubApiModule
 import com.example.go.githubcontributors.di.module.MainActivityModule
 import com.example.go.githubcontributors.di.module.MainFragmentModule
@@ -16,7 +17,8 @@ import javax.inject.Singleton
         AndroidInjectionModule::class,
         GitHubApiModule::class,
         MainActivityModule::class,
-        MainFragmentModule::class
+        MainFragmentModule::class,
+        DetailFragmentModule::class
     ]
 )
 interface AppComponent {
