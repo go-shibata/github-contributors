@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin_xSmall">8dp</dimen>
+    <dimen name="margin_small">12dp</dimen>
     <dimen name="margin_mid">16dp</dimen>
 
     <dimen name="contributor_image_size">48dp</dimen>
@@ -8,4 +10,10 @@
 
     <dimen name="contributors_list_empty_icon_size">48dp</dimen>
     <dimen name="contributors_list_empty_message_text_size">20sp</dimen>
+
+    <dimen name="contributor_detail_image_size">160dp</dimen>
+    <dimen name="contributor_detail_name_text_size">32sp</dimen>
+    <dimen name="contributor_detail_login_id_text_size">28sp</dimen>
+    <dimen name="contributor_detail_icon_size">20dp</dimen>
+    <dimen name="contributor_detail_text_size">20sp</dimen>
 </resources>

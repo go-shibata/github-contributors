@@ -5,4 +5,9 @@
     <string name="contributors_list_empty_message">表示するデータはありません</string>
 
     <string name="fetch_contributors_fail_message">情報の取得に失敗しました</string>
+
+    <string name="contributor_detail_public_repos_text">Public repositories: %d</string>
+    <string name="contributor_detail_public_gists_text">Public gists: %d</string>
+    <string name="contributor_detail_public_followers_text">Followers: %d</string>
+    <string name="contributor_detail_public_following_text">Following: %d</string>
 </resources>
