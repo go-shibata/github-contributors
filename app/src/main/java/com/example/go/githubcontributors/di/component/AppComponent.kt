@@ -2,7 +2,7 @@ package com.example.go.githubcontributors.di.component
 
 import android.app.Application
 import com.example.go.githubcontributors.App
-import com.example.go.githubcontributors.di.module.GitHubServiceModule
+import com.example.go.githubcontributors.di.module.GitHubApiModule
 import com.example.go.githubcontributors.di.module.MainActivityModule
 import com.example.go.githubcontributors.di.module.MainFragmentModule
 import dagger.BindsInstance
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidInjectionModule::class,
-        GitHubServiceModule::class,
+        GitHubApiModule::class,
         MainActivityModule::class,
         MainFragmentModule::class
     ]
