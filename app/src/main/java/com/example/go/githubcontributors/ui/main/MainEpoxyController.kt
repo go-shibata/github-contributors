@@ -1,5 +1,6 @@
 package com.example.go.githubcontributors.ui.main
 
+import androidx.annotation.VisibleForTesting
 import com.airbnb.epoxy.EpoxyController
 import com.example.go.githubcontributors.data.model.Contributor
 import com.example.go.githubcontributors.itemContributor
@@ -12,7 +13,9 @@ class MainEpoxyController @Inject constructor(
     private val listener: OnClickContributorListener
 ) : EpoxyController() {
 
-    private var data: List<Contributor> = emptyList()
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    var data: List<Contributor> = emptyList()
+        private set
 
     fun setData(data: List<Contributor>) {
         this.data = data
