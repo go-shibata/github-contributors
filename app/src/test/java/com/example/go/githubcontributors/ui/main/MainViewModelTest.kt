@@ -64,10 +64,7 @@ class MainViewModelTest {
 
     @Test
     fun fetchContributors_whenSuccess_confirmContributorsFlow() {
-        val data = listOf(
-            Contributor("test1", 1, "url1", "html1", 100),
-            Contributor("test2", 2, "url2", "html2", 200)
-        )
+        val data = mock<List<Contributor>>()
         whenever(mockResponse.isSuccessful).thenReturn(true)
         whenever(mockResponse.body()).thenReturn(data)
         whenever(mockGitHubService.getContributors(any())).then {

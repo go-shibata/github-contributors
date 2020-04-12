@@ -1,10 +1,8 @@
 package com.example.go.githubcontributors.data
 
 import com.example.go.githubcontributors.data.model.Contributor
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.times
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.whenever
+import com.example.go.githubcontributors.data.model.ContributorDetail
+import com.nhaarman.mockitokotlin2.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -39,6 +37,18 @@ class GitHubServiceTest {
 
         gitHubService.getContributors(mockCallback)
         verify(mockGitHubApi, times(1)).getContributors()
+        verify(mockCall, times(1)).enqueue(mockCallback)
+    }
+
+    @Test
+    fun getContributorDetail() {
+        val mockCall = mock<Call<ContributorDetail>>()
+        val mockCallback = mock<Callback<ContributorDetail>>()
+        whenever(mockGitHubApi.getContributorDetail(any())).thenReturn(mockCall)
+
+        val mockLoginId = "mock"
+        gitHubService.getContributorDetail(mockLoginId, mockCallback)
+        verify(mockGitHubApi, times(1)).getContributorDetail(mockLoginId)
         verify(mockCall, times(1)).enqueue(mockCallback)
     }
 }
