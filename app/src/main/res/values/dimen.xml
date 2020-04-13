@@ -18,4 +18,5 @@
     <dimen name="contributor_detail_login_id_text_size">28sp</dimen>
     <dimen name="contributor_detail_icon_size">20dp</dimen>
     <dimen name="contributor_detail_text_size">20sp</dimen>
+    <dimen name="contributor_detail_text_max_width">300dp</dimen>
 </resources>

@@ -34,8 +34,9 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="@{viewModel.contributorDetail.name}"
                 android:textSize="@dimen/contributor_detail_name_text_size"
                 android:textStyle="bold"
@@ -45,8 +46,9 @@
 
             <TextView
                 android:id="@+id/login_id"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="@{viewModel.contributorDetail.loginId}"
                 android:textSize="@dimen/contributor_detail_login_id_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -55,9 +57,9 @@
 
             <TextView
                 android:id="@+id/bio"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:text="@{viewModel.contributorDetail.bio}"
                 android:textSize="@dimen/contributor_detail_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -82,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_xSmall"
                 android:layout_marginTop="@dimen/margin_mid"
+                android:maxWidth="@dimen/contributor_detail_text_max_width"
                 android:text="@{viewModel.contributorDetail.company}"
                 android:textSize="@dimen/contributor_detail_text_size"
                 android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.company) ? View.GONE : View.VISIBLE}"
@@ -106,6 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_xSmall"
+                android:maxWidth="@dimen/contributor_detail_text_max_width"
                 android:text="@{viewModel.contributorDetail.location}"
                 android:textSize="@dimen/contributor_detail_text_size"
                 android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.location) ? View.GONE : View.VISIBLE}"
@@ -130,6 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_xSmall"
+                android:maxWidth="@dimen/contributor_detail_text_max_width"
                 android:text="@{viewModel.contributorDetail.blog}"
                 android:textSize="@dimen/contributor_detail_text_size"
                 android:visibility="@{TextUtils.isEmpty(viewModel.contributorDetail.blog) ? View.GONE : View.VISIBLE}"
@@ -154,6 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_xSmall"
+                android:maxWidth="@dimen/contributor_detail_text_max_width"
                 android:text="@{viewModel.contributorDetail.email}"
                 android:textSize="@dimen/contributor_detail_text_size"
                 android:visibility="@{viewModel.contributorDetail.email != null ? View.VISIBLE : View.GONE}"
