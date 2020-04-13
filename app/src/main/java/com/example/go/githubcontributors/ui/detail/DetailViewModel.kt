@@ -22,11 +22,17 @@ class DetailViewModel @Inject constructor(
     private val _onFailureFetchContributorDetail: SingleLiveData<Unit> = SingleLiveData()
     val onFailureFetchContributorDetail: LiveData<Unit> = _onFailureFetchContributorDetail
 
-    fun fetchContributorDetail(contributor: Contributor) {
+    fun setContributor(contributor: Contributor) {
+        if (contributor.id == contributorDetail.value?.id) return
+
         // set information already obtained
         val contributorDetail = ContributorDetail(contributor)
         _contributorDetail.postValue(contributorDetail)
 
+        fetchContributorDetail(contributor)
+    }
+
+    private fun fetchContributorDetail(contributor: Contributor) {
         gitHubService.getContributorDetail(contributor.name, object : Callback<ContributorDetail> {
             override fun onResponse(
                 call: Call<ContributorDetail>,

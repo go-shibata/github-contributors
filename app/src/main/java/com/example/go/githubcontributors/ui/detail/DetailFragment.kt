@@ -34,7 +34,7 @@ class DetailFragment : Fragment() {
 
         checkNotNull(arguments).let {
             val contributor = DetailFragmentArgs.fromBundle(it).contributor
-            viewModel.fetchContributorDetail(contributor)
+            viewModel.setContributor(contributor)
         }
     }
 
