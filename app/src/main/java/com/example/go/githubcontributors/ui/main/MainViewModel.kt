@@ -15,7 +15,7 @@ class MainViewModel @Inject constructor(
     private val gitHubService: GitHubService
 ) : ViewModel() {
 
-    private val _contributors: MutableLiveData<List<Contributor>> = MutableLiveData(emptyList())
+    private val _contributors: MutableLiveData<List<Contributor>> = MutableLiveData()
     val contributors: LiveData<List<Contributor>> = _contributors
 
     private val _onFailureFetchContributors: SingleLiveData<Unit> = SingleLiveData()
@@ -43,6 +43,7 @@ class MainViewModel @Inject constructor(
             }
 
             fun fail() {
+                _contributors.postValue(emptyList())
                 _onFailureFetchContributors.postValue(Unit)
             }
         })
