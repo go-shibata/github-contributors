@@ -41,7 +41,7 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
         }
         binding.listContributors.apply {
             setController(epoxyController)
-        }.requestModelBuild()
+        }
 
         viewModel.contributors.observe(viewLifecycleOwner, Observer {
             epoxyController.setData(it)
