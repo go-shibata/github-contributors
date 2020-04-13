@@ -35,7 +35,10 @@ class MainFragment : Fragment(), MainEpoxyController.OnClickContributorListener 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentMainBinding.inflate(inflater, container, false)
+        val binding = FragmentMainBinding.inflate(inflater, container, false).apply {
+            viewModel = this@MainFragment.viewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
         binding.swipeRefreshLayout.setOnRefreshListener {
             viewModel.fetchContributors()
         }

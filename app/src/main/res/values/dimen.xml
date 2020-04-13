@@ -4,6 +4,8 @@
     <dimen name="margin_small">12dp</dimen>
     <dimen name="margin_mid">16dp</dimen>
 
+    <dimen name="skeleton_corner_radius">4dp</dimen>
+
     <dimen name="contributor_image_size">48dp</dimen>
     <dimen name="contributor_name_text_size">20sp</dimen>
     <dimen name="contributor_contributions_icon_size">16dp</dimen>
