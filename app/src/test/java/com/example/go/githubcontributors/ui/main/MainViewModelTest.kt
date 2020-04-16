@@ -86,7 +86,8 @@ class MainViewModelTest {
 
         viewModel.fetchContributors()
         verify(mockOnFailureFetchContributorsObserver, times(1)).onChanged(any())
-        verify(mockContributorsObserver, never()).onChanged(any())
+        // include init of MainViewModel
+        verify(mockContributorsObserver, times(1)).onChanged(any())
     }
 
     @Test
@@ -99,6 +100,7 @@ class MainViewModelTest {
 
         viewModel.fetchContributors()
         verify(mockOnFailureFetchContributorsObserver, times(1)).onChanged(any())
-        verify(mockContributorsObserver, never()).onChanged(any())
+        // include init of MainViewModel
+        verify(mockContributorsObserver, times(1)).onChanged(any())
     }
 }
